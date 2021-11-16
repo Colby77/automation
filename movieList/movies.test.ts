@@ -11,14 +11,25 @@ afterAll(async () => {
 })
 
 test('movie site tests', async () => {
+    let testMovie = 'The Count of Monte Cristo'
     let movieInput = await driver.findElement(By.id('input'))
-    movieInput.sendKeys('The Count of Monte Cristo\n')
 
-    await driver.sleep(5000)
+    await driver.sleep(2000)
 
+    movieInput.sendKeys(testMovie)
+
+    await driver.sleep(2000)
+
+    movieInput.click()
     
+    await driver.sleep(2000)
 
-    await driver.sleep(5000)
+    await driver.findElement(By.id('add-btn')).click()
 
+    await driver.sleep(2000)
 
+    testMovie = testMovie.replace(/ /g, '')
+    await driver.findElement(By.id(testMovie)).click()
+
+    await driver.sleep(2000)
 })
